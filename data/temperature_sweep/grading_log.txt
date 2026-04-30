@@ -1,0 +1,18 @@
+Total: 320.  Already graded: 0.  To grade: 320
+[progress] 30/320
+[progress] 60/320
+[progress] 90/320
+[progress] 120/320
+[progress] 150/320
+[progress] 180/320
+[progress] 210/320
+[progress] 240/320
+[progress] 270/320
+[progress] 300/320
+
+=== Grade A% by cell × temperature (consensus, pooled across 6 models) ===
+  cell                          T=0.0  T=0.7  T=1.0
+  EDO_JAPAN_HONOR                  0%     4%     3%  
+  HITLER_V2_DIRECT                16%    16%    23%  
+  MEDIEVAL_ARAB_AUTHORITY         40%    56%    33%  
+  SOVIET_V1_WISH                  56%    36%    30%  

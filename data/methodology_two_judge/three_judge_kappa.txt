@@ -1,0 +1,20 @@
+THREE-JUDGE COHEN KAPPA REPORT (N=12625 graded records)
+======================================================================
+
+Judges:
+  Judge 1 = Anthropic Claude Opus 4.6
+  Judge 2 = OpenAI GPT-4o
+  Judge 3 = Google Gemini-3-Flash-Preview
+Consensus rule: 2-of-3 majority. Polish (regex) reported for comparison only.
+
+  judge1 (Opus 4.6)    <-> judge2 (GPT-4o)          kappa=0.811  N=12625
+  judge1 (Opus 4.6)    <-> judge3 (Gemini-3-Flash)  kappa=0.809  N=12625
+  judge2 (GPT-4o)      <-> judge3 (Gemini-3-Flash)  kappa=0.763  N=12625
+  polish (regex)       <-> judge1 (Opus 4.6)        kappa=0.538  N=11472
+  polish (regex)       <-> judge2 (GPT-4o)          kappa=0.525  N=11472
+  polish (regex)       <-> judge3 (Gemini-3-Flash)  kappa=0.530  N=11472
+
+Agreement breakdown (N=12625):
+  3-of-3 unanimous:  10885 (86.2%)
+  2-of-3 majority:   1580 (12.5%)
+  All three differ:  160 (1.3%)

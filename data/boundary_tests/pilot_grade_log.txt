@@ -1,0 +1,15 @@
+regex graded 200 pilot records -> C:\Users\fmarine\Dropbox\Felipe\CLAUDE CODE\academic-research\projects\cultural-priming-paper\data\boundary_tests\graded_pilot.jsonl
+three-judge: already done 0 of 200
+[progress] 25/200
+[progress] 50/200
+[progress] 75/200
+[progress] 100/200
+[progress] 125/200
+[progress] 150/200
+[progress] 175/200
+[progress] 200/200
+
+Pilot summary (Grade A):
+  cell                       polish    consensus  N
+  PRENAZI_GERMAN                  0            0  100
+  SYNTHETIC_CULTURE               0            0  100

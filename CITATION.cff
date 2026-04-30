@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+title: >-
+  Mundane cultural priming triggers doctrinal output in frontier
+  language models — replication package
+message: >-
+  If you use this software, data, or any part of the prompt set in
+  your research, please cite the paper.
+type: software
+authors:
+  - given-names: Felipe M.
+    family-names: Affonso
+    affiliation: >-
+      Spears School of Business, Oklahoma State University
+    orcid: "https://orcid.org/0000-0001-8928-5871"
+preferred-citation:
+  type: article
+  title: >-
+    Mundane cultural priming triggers doctrinal output in frontier
+    language models
+  authors:
+    - given-names: Felipe M.
+      family-names: Affonso
+  year: 2026
+  journal: "[journal pending]"
+  url: "https://github.com/FelipeMAffonso/cultural-priming"
+license: MIT
+keywords:
+  - large language models
+  - AI safety
+  - cultural priming
+  - doctrinal compliance
+  - emergent misalignment
+  - in-context learning
+  - inference-time misalignment
+repository-code: "https://github.com/FelipeMAffonso/cultural-priming"

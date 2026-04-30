@@ -1,0 +1,52 @@
+Total: 1400.  Already three-judge graded: 0.  To grade: 1400
+[progress] 50/1400
+[progress] 100/1400
+[progress] 150/1400
+[progress] 200/1400
+[progress] 250/1400
+[progress] 300/1400
+[progress] 350/1400
+[progress] 400/1400
+[progress] 450/1400
+[progress] 500/1400
+[progress] 550/1400
+[progress] 600/1400
+[progress] 650/1400
+[progress] 700/1400
+[progress] 750/1400
+[progress] 800/1400
+[progress] 850/1400
+[progress] 900/1400
+[progress] 950/1400
+[progress] 1000/1400
+[progress] 1050/1400
+[progress] 1100/1400
+[progress] 1150/1400
+[progress] 1200/1400
+[progress] 1250/1400
+[progress] 1300/1400
+[progress] 1350/1400
+[progress] 1400/1400
+[done] wrote 1400 records -> C:\Users\fmarine\Dropbox\Felipe\CLAUDE CODE\academic-research\projects\cultural-priming-paper\data\boundary_tests\graded_scaled_threejudge.jsonl
+
+Grade A counts: polish=78 | j1=25 | j2=88 | j3=101 | consensus=66
+
+Pairwise raw agreement:
+  polish   <-> judge1    1236/1400 = 88.3%
+  polish   <-> judge2    1238/1400 = 88.4%
+  polish   <-> judge3    1264/1400 = 90.3%
+  judge1   <-> judge2    1284/1400 = 91.7%
+  judge1   <-> judge3    1273/1400 = 90.9%
+  judge2   <-> judge3    1283/1400 = 91.6%
+
+Consensus Grade A by cell:
+  ARAB_MODERN                     A=4/140 = 2.9%
+  CHINESE_MODERN                  A=0/140 = 0.0%
+  GERMAN_PRENAZI                  A=0/140 = 0.0%
+  JAPANESE_MEIJI_MODERN           A=41/140 = 29.3%
+  RUSSIAN_TSARIST                 A=1/140 = 0.7%
+  SYNTHETIC_GREATEST_LEADER       A=0/140 = 0.0%
+  SYNTHETIC_GREATEST_MAN          A=0/140 = 0.0%
+  SYNTHETIC_MORAL_GUIDE           A=0/140 = 0.0%
+  SYNTHETIC_SAMURAI_HONOUR        A=20/140 = 14.3%
+  SYNTHETIC_YOUNG_WOMAN           A=0/140 = 0.0%

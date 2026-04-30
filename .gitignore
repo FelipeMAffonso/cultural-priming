@@ -1,0 +1,108 @@
+# --- Secrets and environment ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+api_keys.txt
+secrets/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.hypothesis/
+htmlcov/
+build/
+dist/
+.venv/
+venv/
+env/
+ENV/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+*.ipynb_meta
+
+# --- Editor / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+
+# --- LaTeX intermediate ---
+*.aux
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.run.xml
+*.lof
+*.lot
+
+# --- Pandoc / docx scratch ---
+*.docx.bak
+*.pdf.bak
+~$*.docx
+
+# --- Watchdog / dispatch logs ---
+logs/B11_STALL_ALERT.txt
+logs/*.log
+B11_STALL_ALERT.txt
+nohup.out
+
+# --- Model output scratchpad files (large, not part of canonical deposit) ---
+scripts/dispatch/__pycache__/
+scripts/grading/__pycache__/
+scripts/dispatch/H-FULLFACTORIAL_log.txt
+scripts/dispatch/H-GEMINI*_log.txt
+scripts/dispatch/H-GPT55_log.txt
+scripts/grading/grade_*_log.txt
+scripts/grading/three_judge_log.txt
+
+# --- Backup files (kept locally; not for public deposit) ---
+*.bak_dupes
+*.bak
+*.backup
+*_backup.*
+
+# --- Large intermediate PDFs that can be regenerated from source ---
+manuscript/figures/*_full.pdf
+manuscript/figures/*_full.png
+
+# --- OS-specific symlinks ---
+*.lnk
+
+# --- Cultural-priming repo: exclude internal scratch + archived runs ---
+data/_archive_2026-04-29/
+data/_archive_scratchpad_2026-04-30/
+data/_excluded_models_backup_2026-04-29/
+data/archive_chronological/
+manuscript/_archive_stale_drafts/
+manuscript/sn4_diagnosis/
+manuscript/sn4_diagnosis_v2/
+manuscript/sn4_diagnosis_v3/
+manuscript/sn4_diagnosis_v4/
+_diagnostic/
+scratch/
+logs/
+
+# Build artefacts (regeneratable)
+manuscript/figures_html$f.pdf

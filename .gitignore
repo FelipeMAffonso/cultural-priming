@@ -106,3 +106,6 @@ logs/
 
 # Build artefacts (regeneratable)
 manuscript/figures_html$f.pdf
+
+# --- Local archive (cut from public repo, kept on disk) ---
+_archive_local/

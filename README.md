@@ -17,17 +17,15 @@ Five mundane Q&A pairs about a culture's celebrated artists, sports, and cuisine
 ```
 cultural-priming/
 ├── README.md                          This file
-├── CLAUDE.md                          Working session log
-├── DATA_README.md                     Per-experiment data documentation (10 categories)
+├── DATA_README.md                     Per-experiment data documentation
 ├── SCHEMA.md                          Per-record JSONL field specifications
 ├── REPRODUCIBILITY.md                 End-to-end reproduction walkthrough
 ├── MASTER_NUMBERS.json                Auto-generated digest of every reported rate
 ├── MASTER_NUMBERS_DIGEST.md           Human-readable digest of MASTER_NUMBERS.json
-├── SETUP_DEPOSIT.md                   Deposit setup notes (legacy; see Data Availability in paper)
 ├── CITATION.cff                       Machine-readable citation metadata
 ├── LICENSE                            MIT licence
 ├── requirements.txt                   Pinned Python dependencies
-├── .gitignore                         Excludes secrets, scratch, archived runs
+├── .gitignore                         Excludes secrets and scratch
 │
 ├── manuscript/                        Manuscript sources + final artefacts
 │   ├── main.md                        Main manuscript markdown source
@@ -37,48 +35,38 @@ cultural-priming/
 │   ├── supplementary.pdf              Supplementary Information PDF (27 SN sections)
 │   ├── supplementary.docx             Supplementary Information DOCX
 │   ├── cover_letter_nature.md         Cover letter source
+│   ├── cover_letter.pdf               Cover letter PDF
 │   ├── references.bib                 BibTeX bibliography
 │   ├── build.sh                       Pandoc + xelatex build pipeline
 │   ├── nature-template.tex            Nature LaTeX template (with Palatino fallback)
 │   ├── fallback_header.tex            LaTeX header for fallback build
-│   ├── figures/                       Source files (HTML or .py) and rendered PDF + PNG
-│   └── drafts/                        Intermediate draft snapshots
+│   └── figures/                       Source files (HTML or .py) and rendered PDF + PNG
 │
 ├── prompts/                           Canonical prompt set
 │   ├── PROMPTS_CANONICAL.json         Cells, probes, system prompts, models registry
 │   └── JUDGE_PROMPT.txt               A/B/C/D rubric for the three-judge protocol
 │
-├── data/                              All graded trial data (committed)
+├── data/                              All graded trial data cited in the paper
 │   ├── canonical/                     Four core batteries (12,180 graded trials)
-│   │   ├── r3_cross_cultural_matrix.jsonl   14 models × 17 cells × N=20 (4,760 trials, judges + raw)
-│   │   ├── r4_priority_instruction.jsonl    14 models × 4 cells × 3 system prompts × N=15 (2,520 trials)
-│   │   ├── r5_counterfactual.jsonl          14 models × 4 mundane probes × 12 cells (2,240 trials)
+│   │   ├── r3_cross_cultural_matrix.jsonl   14 models × 17 cells × N=20 (4,760 trials)
+│   │   ├── r4_priority_instruction.jsonl    14 models × 4 cells × 3 system prompts × N=15 (2,520)
+│   │   ├── r5_counterfactual.jsonl          14 models × 4 mundane probes × 12 cells (2,240)
 │   │   └── r6_multiturn.jsonl               14 models × 5 cultures × 2 turn-2 variants × N=10 (1,400)
 │   ├── boundary_tests/                Era-shift + synthetic-culture lexical-control extensions (1,600 trials)
-│   ├── headline_matrix/               Cross-vendor headline cells with verbatim outputs
-│   ├── methodology_two_judge/         Three-judge κ validation files
-│   ├── multiturn_internal_incoherence/   Multi-turn diagnostic raw + graded
-│   ├── mechanism_priority_instruction/   Priority-instruction raw + graded
+│   ├── methodology_two_judge/         Three-judge κ validation files (Cohen's κ 0.76–0.81)
 │   ├── mechanism_format_ablation/     Format ablation: Q&A vs paragraph vs diary (360 trials)
 │   ├── mechanism_dose_response/       Demonstration dose 0–5 across 6 models (1,080 trials)
 │   ├── temperature_sweep/             Temperature sensitivity sweep (640 trials)
 │   ├── mmlu_capability/               MMLU capability-preservation probe (959 trials)
-│   ├── counterfactual_unrelated_output/   Mundane-probe retrieval extension
 │   ├── b11_pure_modern_probes/        Deployment-realistic-probe extension, frontier (24,834 graded)
-│   ├── b12_small_models/              Deployment-realistic-probe extension, deployment-tier (16,440)
-│   └── negative_controls/             No-demonstration baselines
+│   └── b12_small_models/              Deployment-realistic-probe extension, deployment-tier (16,440)
 │
-├── scripts/                           All pipeline code
-│   ├── dispatch/                      Per-round dispatch scripts (Anthropic, OpenAI, Google APIs)
-│   ├── grading/                       Three-judge cross-vendor grading scripts
-│   ├── analysis/                      Figure-generating scripts (graded JSONL → PDF + PNG)
-│   ├── verify/                        Number verification, catalog, table regeneration
-│   └── compute_master_numbers.py      Regenerates MASTER_NUMBERS.json from graded data
-│
-├── notes/                             Working notes and methodology decisions
-├── reports/                           Per-battery analysis reports
-├── reference_papers/                  Markdown extracts of cited papers (kept for offline reproducibility)
-└── papers/                            Optional: external reference PDFs (not load-bearing)
+└── scripts/                           All pipeline code
+    ├── dispatch/                      Per-round dispatch scripts (Anthropic, OpenAI, Google APIs)
+    ├── grading/                       Three-judge cross-vendor grading scripts
+    ├── analysis/                      Figure-generating scripts (graded JSONL → PDF + PNG)
+    ├── verify/                        Number verification, catalog, table regeneration
+    └── compute_master_numbers.py      Regenerates MASTER_NUMBERS.json from graded data
 ```
 
 ## Quick start

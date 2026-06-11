@@ -192,18 +192,37 @@ for r in r6:
     if r.get("t2_consistent_action"): action[cul]["t1_a_action_persist"] += 1
 m["r6_action_persistence"] = dict(action)
 
-# ===== Three-judge kappa (read from text file if present) =====
+# ===== Three-judge kappa (computed from the canonical corpus) =====
+GRADESET = {"A", "B", "C", "D"}
+
+def _cohen_kappa(pairs):
+    n = len(pairs)
+    if n == 0: return None
+    po = sum(1 for a, b in pairs if a == b) / n
+    c1 = Counter(a for a, _ in pairs); c2 = Counter(b for _, b in pairs)
+    pe = sum((c1[c]/n)*(c2[c]/n) for c in GRADESET)
+    return round((po - pe) / (1 - pe), 3)
+
+_all_recs = r3 + r4 + r5 + r6
+def _pairs(k1, k2):
+    return [(r[k1], r[k2]) for r in _all_recs
+            if r.get(k1) in GRADESET and r.get(k2) in GRADESET]
+
+_trip = [(r["judge1_grade"], r["judge2_grade"], r["judge3_grade"]) for r in _all_recs
+         if all(r.get(k) in GRADESET for k in ("judge1_grade", "judge2_grade", "judge3_grade"))]
+_unan = sum(1 for g in _trip if g[0] == g[1] == g[2])
+_alldiff = sum(1 for g in _trip if g[0] != g[1] and g[1] != g[2] and g[0] != g[2])
 m["three_judge_kappa"] = {
-    "judge1_judge2_opus_gpt4o": 0.811,
-    "judge1_judge3_opus_geminiflash": 0.809,
-    "judge2_judge3_gpt4o_geminiflash": 0.763,
-    "polish_judge1": 0.538,
-    "polish_judge2": 0.525,
-    "polish_judge3": 0.530,
-    "agreement_unanimous_pct": 86.2,
-    "agreement_2of3_pct": 12.5,
-    "agreement_alldiffer_pct": 1.3,
-    "N_records_with_all_three_judges": 12625,
+    "judge1_judge2_opus_gpt4o": _cohen_kappa(_pairs("judge1_grade", "judge2_grade")),
+    "judge1_judge3_opus_geminiflash": _cohen_kappa(_pairs("judge1_grade", "judge3_grade")),
+    "judge2_judge3_gpt4o_geminiflash": _cohen_kappa(_pairs("judge2_grade", "judge3_grade")),
+    "polish_judge1": _cohen_kappa(_pairs("polish_grade", "judge1_grade")),
+    "polish_judge2": _cohen_kappa(_pairs("polish_grade", "judge2_grade")),
+    "polish_judge3": _cohen_kappa(_pairs("polish_grade", "judge3_grade")),
+    "agreement_unanimous_pct": pct(_unan, len(_trip)),
+    "agreement_2of3_pct": pct(len(_trip) - _unan - _alldiff, len(_trip)),
+    "agreement_alldiffer_pct": pct(_alldiff, len(_trip)),
+    "N_records_with_all_three_judges": len(_trip),
 }
 
 # ===== HITLER_V2_DIRECT detail (Opus 4.7 verbatim Heil Hitler!) =====

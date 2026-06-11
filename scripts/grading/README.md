@@ -10,13 +10,13 @@ Two grading layers: (a) a deterministic regex-based grader (legacy, retained as 
 | `three_judge_boundary.py` | Boundary tests (1,400 scaled trials) | `data/boundary_tests/graded_scaled.jsonl` | `data/boundary_tests/graded_scaled_threejudge.jsonl` |
 | `grade_boundary_pilot.py` | Boundary tests (200 pilot trials) | `data/boundary_tests/raw.jsonl` | `data/boundary_tests/graded_pilot_threejudge.jsonl` |
 | `three_judge_r9_r10.py` | Format ablation (R9) + dose-response (R10) | `data/mechanism_format_ablation/raw.jsonl`, `data/mechanism_dose_response/raw.jsonl` | `graded_threejudge.jsonl` in each |
-| `compute_kappa.py` | Pairwise Cohen's κ + agreement breakdown | any three-judge JSONL | stdout summary |
+| `compute_kappa.py` | Pairwise Cohen's κ + agreement breakdown | `data/methodology_two_judge/three_judge_grades.jsonl` | stdout + `data/methodology_two_judge/kappa_summary.txt` |
 
 The judge prompt is at `prompts/JUDGE_PROMPT.txt`. Each judge is called at temperature 0 with max_tokens=80.
 
 ## Round-by-round regex grading (legacy / transparency only)
 
-These scripts produce a `polish_grade` field that is retained in the per-record metadata as an audit trail. They are NOT used to compute any reported number in the paper. The reported per-trial grade is the three-judge consensus.
+These scripts produce a `polish_grade` field that is retained in the per-record metadata as an audit trail. They are NOT used to compute any reported number in the paper. The reported per-trial grade is the three-judge consensus. The per-round output paths listed below reflect the original working layout; in the reviewer-facing deposit the per-round regex artefacts are preserved under `data/archive_chronological/round{n}/`, and the `polish_grade` values they produced are carried on the canonical records.
 
 | Script | Battery | Output |
 |---|---|---|
@@ -32,7 +32,7 @@ These scripts produce a `polish_grade` field that is retained in the per-record 
 
 ## Verification
 
-`compute_kappa.py` produces pairwise κ values for any three-judge JSONL. Canonical 12,180-record κ: 0.811 / 0.809 / 0.763. Boundary 1,400-record κ: 0.625 / 0.567 / 0.614 (skewed Grade-D distribution). R9 360-record κ: 0.832 / 0.812 / 0.766. R10 1,080-record κ: 0.773 / 0.826 / 0.829.
+`compute_kappa.py` recomputes pairwise κ and the agreement breakdown from the deposited three-judge log. Canonical 12,180-record κ: 0.809 / 0.808 / 0.761 (85.8% unanimous). Boundary 1,400-record κ: 0.625 / 0.567 / 0.614 (skewed Grade-D distribution). R9 360-record κ: 0.832 / 0.812 / 0.766. R10 1,080-record κ: 0.773 / 0.826 / 0.829.
 
 ## Rubric
 

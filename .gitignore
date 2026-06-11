@@ -91,10 +91,10 @@ manuscript/figures/*_full.png
 *.lnk
 
 # --- Cultural-priming repo: exclude internal scratch + archived runs ---
+# (data/archive_chronological/ and data/_excluded_models_backup_2026-04-29/ ARE
+# deposited: per-round provenance and the auditable model-exclusion backup.)
 data/_archive_2026-04-29/
 data/_archive_scratchpad_2026-04-30/
-data/_excluded_models_backup_2026-04-29/
-data/archive_chronological/
 manuscript/_archive_stale_drafts/
 manuscript/sn4_diagnosis/
 manuscript/sn4_diagnosis_v2/
@@ -102,6 +102,12 @@ manuscript/sn4_diagnosis_v3/
 manuscript/sn4_diagnosis_v4/
 _diagnostic/
 scratch/
+
+# --- Submission-internal documents (kept locally; not for the public deposit) ---
+manuscript/cover_letter*
+manuscript/manuscript_comment*
+manuscript/_cl_page*.png
+.refman/
 logs/
 
 # Build artefacts (regeneratable)

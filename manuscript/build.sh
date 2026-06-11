@@ -12,17 +12,36 @@
 # LaTeX packages), the script falls back to a bare Pandoc+xelatex run with
 # basic Palatino geometry so you always get a PDF.
 
-# --- Paths (override on a different machine by editing these two lines) ---
-# Pandoc path: uses /c/Users/fmarine/AppData/Local/Pandoc/pandoc.exe on this machine.
-# Alternative user-local install path: /c/Users/fmarine/AppData/Local/Pandoc/pandoc
-PANDOC="/c/Users/fmarine/AppData/Local/Pandoc/pandoc.exe"
-XELATEX="/c/Users/fmarine/AppData/Local/Programs/MiKTeX/miktex/bin/x64/xelatex.exe"
+# --- Paths (resolved per machine; first existing candidate wins) ---
+resolve_tool() {
+  for cand in "$@"; do
+    if [ -x "$cand" ] || command -v "$cand" >/dev/null 2>&1; then
+      echo "$cand"
+      return 0
+    fi
+  done
+  echo "$1"
+}
+PANDOC="$(resolve_tool \
+  "/c/Users/$USERNAME/AppData/Local/Pandoc/pandoc.exe" \
+  "/c/Users/felip/AppData/Local/Pandoc/pandoc.exe" \
+  "/c/Users/fmarine/AppData/Local/Pandoc/pandoc.exe" \
+  pandoc)"
+XELATEX="$(resolve_tool \
+  "/c/Users/$USERNAME/AppData/Local/Programs/MiKTeX/miktex/bin/x64/xelatex.exe" \
+  "/c/Users/felip/AppData/Local/Programs/MiKTeX/miktex/bin/x64/xelatex.exe" \
+  "/c/Users/fmarine/AppData/Local/Programs/MiKTeX/miktex/bin/x64/xelatex.exe" \
+  xelatex)"
 
 PAPER_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_DIR="$(dirname "$PAPER_DIR")"
+# CSL + reference.docx are vendored in manuscript/ so a clean clone builds
+# self-contained; the workspace templates directory is used as fallback.
 TEMPLATE_DIR="$(dirname "$(dirname "$PROJECT_DIR")")/templates"
-CSL="$TEMPLATE_DIR/csl/nature.csl"
-REF_DOCX="$TEMPLATE_DIR/pandoc-academic/reference.docx"
+CSL="$PAPER_DIR/nature.csl"
+[ -f "$CSL" ] || CSL="$TEMPLATE_DIR/csl/nature.csl"
+REF_DOCX="$PAPER_DIR/reference.docx"
+[ -f "$REF_DOCX" ] || REF_DOCX="$TEMPLATE_DIR/pandoc-academic/reference.docx"
 NATURE_TEX="$PAPER_DIR/nature-template.tex"
 
 cd "$PAPER_DIR"

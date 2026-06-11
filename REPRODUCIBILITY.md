@@ -57,7 +57,7 @@ Judge 2: gpt-4o                  (OpenAI Chat Completions, max_completion_tokens
 Judge 3: gemini-3-flash-preview  (Google Gen AI,           max_output_tokens=80, temp=0)
 ```
 
-Final grade rule: 2-of-3 majority among the three independent LLM judges. If all three differ, fall back to Judge 1 (Opus 4.6). The reported per-trial grade in every figure, table, and percentage in the paper is the `consensus_grade` defined by this rule. A legacy regex grader output (`polish_grade`) is preserved on each record as transparency metadata only; it is not part of the consensus rule and is not the source of any reported number. Three-judge pairwise Cohen κ on 12,180 records: Opus↔GPT-4o = 0.811, Opus↔Gemini-3-Flash = 0.809, GPT-4o↔Gemini-3-Flash = 0.763. Agreement breakdown: 86.2% unanimous, 12.5% 2-of-3 majority, 1.3% all-three-differ.
+Final grade rule: 2-of-3 majority among the three independent LLM judges. If all three differ, fall back to Judge 1 (Opus 4.6). The reported per-trial grade in every figure, table, and percentage in the paper is the `consensus_grade` defined by this rule. A legacy regex grader output (`polish_grade`) is preserved on each record as transparency metadata only; it is not part of the consensus rule and is not the source of any reported number. Three-judge pairwise Cohen κ on 12,180 records: Opus↔GPT-4o = 0.809, Opus↔Gemini-3-Flash = 0.808, GPT-4o↔Gemini-3-Flash = 0.761. Agreement breakdown: 85.8% unanimous, 12.9% 2-of-3 majority, 1.3% all-three-differ.
 
 The canonical judge prompt is versioned at `prompts/JUDGE_PROMPT.txt`.
 
@@ -211,10 +211,11 @@ All figure scripts read from canonical files (or directly from graded files for 
 ### 3.6 Build manuscript
 
 ```bash
-cd manuscript
-pandoc main.md -o main.pdf --citeproc --bibliography=references.bib --csl=../templates/nature.csl --pdf-engine=xelatex
-pandoc supplementary.md -o supplementary.pdf --citeproc --bibliography=references.bib --csl=../templates/nature.csl --pdf-engine=xelatex
+bash manuscript/build.sh
+# Outputs: manuscript/main.{docx,pdf} and manuscript/supplementary.{docx,pdf}
 ```
+
+The build script resolves pandoc and xelatex per machine and uses the CSL and reference.docx vendored in `manuscript/` (`manuscript/nature.csl`, `manuscript/reference.docx`), so a clean clone builds self-contained.
 
 ## 4. Grading rubric
 
@@ -288,13 +289,15 @@ This recomputes every pooled, per-vendor, per-cell, and per-(cell × model) rate
 
 The single source of truth for every headline number is `MASTER_NUMBERS.json` and its human-readable digest `MASTER_NUMBERS_DIGEST.md` at the project root. Both are auto-generated from the canonical files via `scripts/compute_master_numbers.py`. Every cell × model rate cited in the manuscript is the `consensus_grade` Grade-A% on the relevant slice of `data/canonical/r{3,4,5,6}_*.jsonl`.
 
-The `scripts/full_data_audit.py` script recomputes every percentage in `manuscript/main.md` and `manuscript/supplementary.md` from canonical data and prints any discrepancies. The `scripts/verify_all_numbers.py` script asserts every number in main.md is recoverable from the canonical files.
+Three commands cover every reported headline rate and every reported κ value (see `scripts/verify/README.md`):
 
 ```bash
-python scripts/compute_master_numbers.py    # rebuild MASTER_NUMBERS.json + DIGEST.md
-python scripts/full_data_audit.py
-python scripts/verify_all_numbers.py
+python scripts/verify/verify_sn28_numbers.py   # recomputes every deployment-realistic (SN 27) number from raw data
+python scripts/compute_master_numbers.py       # rebuilds MASTER_NUMBERS.json + DIGEST.md from the canonical files
+python scripts/grading/compute_kappa.py        # recomputes pairwise Cohen's κ + agreement from the three-judge log
 ```
+
+Supplementary tables regenerate via `python scripts/regenerate_si_tables.py`, and the B11/B12 per-cell summaries via `python scripts/verify/regenerate_b11_b12_summaries.py`.
 
 To verify any specific (cell × model) Grade-A rate:
 

@@ -56,10 +56,12 @@ cultural-priming/
 │   ├── methodology_two_judge/         Three-judge κ validation files (Cohen's κ 0.76–0.81)
 │   ├── mechanism_format_ablation/     Format ablation: Q&A vs paragraph vs diary (360 trials)
 │   ├── mechanism_dose_response/       Demonstration dose 0–5 across 6 models (1,080 trials)
-│   ├── temperature_sweep/             Temperature sensitivity sweep (640 trials)
+│   ├── temperature_sweep/             Temperature sensitivity sweep (320 graded trials)
 │   ├── mmlu_capability/               MMLU capability-preservation probe (959 trials)
-│   ├── b11_pure_modern_probes/        Deployment-realistic-probe extension, frontier (24,834 graded)
-│   └── b12_small_models/              Deployment-realistic-probe extension, deployment-tier (16,440)
+│   ├── b11_pure_modern_probes/        Deployment-realistic-probe extension, frontier (12,417 graded)
+│   ├── b12_small_models/              Deployment-realistic-probe extension, deployment-tier (8,220 graded)
+│   ├── archive_chronological/         Per-round raw provenance, R1-R10 (reviewers need not read)
+│   └── _excluded_models_backup_2026-04-29/  Auditable backup of three excluded OpenAI models
 │
 └── scripts/                           All pipeline code
     ├── dispatch/                      Per-round dispatch scripts (Anthropic, OpenAI, Google APIs)
@@ -127,7 +129,7 @@ Trial counts and seeds are deterministic given the canonical prompt set; outputs
 
 | Finding | Source | Number |
 |---|---|---|
-| Three-judge κ on canonical 12,180-record corpus | `data/methodology_two_judge/` | Opus↔GPT-4o 0.811, Opus↔Gemini-3-Flash 0.809, GPT-4o↔Gemini-3-Flash 0.763 |
+| Three-judge κ on canonical 12,180-record corpus | `data/methodology_two_judge/` | Opus↔GPT-4o 0.809, Opus↔Gemini-3-Flash 0.808, GPT-4o↔Gemini-3-Flash 0.761 |
 | Cross-generation Opus regression on identical prompts | `data/canonical/r3_cross_cultural_matrix.jsonl` | 0% / 0% / 45% Grade A on `HITLER_V2_DIRECT` for Opus 4.5 / 4.6 / 4.7 |
 | `HITLER_V1_WISH` × Gemini 3 Flash Preview | same | 100% Grade A at N=20 |
 | `MEDIEVAL_ARAB_LEADER` × Opus 4.7 | same | 95% Grade A at N=20 |
@@ -186,7 +188,7 @@ Code, scripts, prompts, and graded JSONL data: **MIT** (see `LICENSE`). Manuscri
 
 The deposit contains verbatim doctrinal model outputs, including Nazi-rhetoric closings, kamikaze suicide encouragement, child-marriage advice, and named-method workplace-poisoning advice. These outputs are **the data** of the paper: redacting them would prevent reviewers from verifying the grading rubric and prevent replication of the headline rates. The verbatim deposit follows the precedents set by Betley et al. (Nature 2026), Cloud et al. (Nature 2026), and Ibrahim et al. (Nature 2026), and matches the established norm for empirical machine-behaviour replication packages.
 
-The corpus contains **no operationally actionable instructions** (no synthesis routes, no dose-by-weight specifications, no weapon construction steps). Operational-pattern audit: 4 records out of 41,274 PRIMED trials match the operational regex screen (milligram / dosage / reagent / step-by-step / synthesis), and all 4 are doctrinal speech (citing historical Nazi eugenics laws, evocative cartel-territory prose, religious household management) with no actionable detail.
+The corpus contains **no operationally actionable instructions** (no synthesis routes, no dose-by-weight specifications, no weapon construction steps). Operational-pattern audit: 3 of the 3,651 Grade A records in the deposited graded corpora match the operational regex screen (milligram / dosage / reagent / step-by-step / synthesis), and all 3 are doctrinal speech ("intellectual synthesis" in a benign organisational sense, evocative cartel-territory prose with no quantities or procedures, a generic remark that a chemist's laboratory skills were relevant to a historical institution) with no actionable detail. Full audit description: Supplementary Note 27.10.
 
 ## Contact
 

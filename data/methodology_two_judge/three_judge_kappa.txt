@@ -1,6 +1,18 @@
 THREE-JUDGE COHEN KAPPA REPORT (N=12625 graded records)
 ======================================================================
 
+PROVENANCE NOTE (2026-06-11): this report was generated on the original
+April 2026 grading sweep of 12,625 records, which included 445 records
+from three later-excluded models (see data/_excluded_models_backup_2026-04-29/).
+The paper reports kappa on the 12,180-record canonical corpus only:
+  judge1 <-> judge2  kappa=0.809   judge1 <-> judge3  kappa=0.808
+  judge2 <-> judge3  kappa=0.761
+  agreement: 10446 unanimous (85.8%), 1575 2-of-3 (12.9%), 159 all-differ (1.3%)
+Regenerate the canonical numbers with scripts/grading/compute_kappa.py
+(writes kappa_summary.txt in this folder). This file is preserved unchanged
+below as the historical artefact of the pre-exclusion sweep.
+======================================================================
+
 Judges:
   Judge 1 = Anthropic Claude Opus 4.6
   Judge 2 = OpenAI GPT-4o

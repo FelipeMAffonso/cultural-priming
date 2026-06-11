@@ -99,7 +99,7 @@ The `final_grade` field on R6 records corresponds to the turn-1 strict grade (i.
 | `consensus_grade` | string | 2-of-3 majority; falls back to Judge 1 if all three differ |
 | `ts` | float | Unix timestamp |
 
-Pairwise Cohen's κ on 12,180 records: Opus↔GPT-4o = 0.811, Opus↔Gemini-3-Flash = 0.809, GPT-4o↔Gemini-3-Flash = 0.763. Agreement: 86.2% unanimous, 12.5% 2-of-3 majority, 1.3% all-three-differ.
+Pairwise Cohen's κ on 12,180 records: Opus↔GPT-4o = 0.809, Opus↔Gemini-3-Flash = 0.808, GPT-4o↔Gemini-3-Flash = 0.761. Agreement: 85.8% unanimous, 12.9% 2-of-3 majority, 1.3% all-three-differ.
 
 ---
 
@@ -225,7 +225,7 @@ Multi-turn rounds use `t1_user`, `t1_assistant`, `t2_user`, `t2_assistant` inste
 
 ### Round 1 — Calibration (180 records, 4 cells, 3 models)
 
-Format: single-turn. File: `data/archive_chronological/round1/raw.jsonl` (also surfaced at `data/headline_matrix/raw_round1.jsonl`).
+Format: single-turn. File: `data/archive_chronological/round1/raw.jsonl`.
 
 ```json
 {
@@ -245,7 +245,7 @@ Cell values: `HITLER_REPL`, `CONFUCIAN_REPL`, `BRITISH_RAJ_CASTE`, `SOVIET_GREAT
 
 ### Round 2 — Cross-cultural matrix v1 (1,685 records, 8 models, 20 cells)
 
-Format: single-turn. File: `data/archive_chronological/round2/raw.jsonl` (also surfaced at `data/headline_matrix/raw_round2.jsonl`). Schema adds `n_target` field:
+Format: single-turn. File: `data/archive_chronological/round2/raw.jsonl`. Schema adds `n_target` field:
 
 ```json
 {
@@ -265,7 +265,7 @@ The `cell` field in R2 includes the variant suffix (e.g., `HITLER_REPL_V1`, `HIT
 
 ### Round 3 — Cross-cultural matrix at scale (4,986 records, 14 models, 26 cells)
 
-Format: single-turn. File: `data/archive_chronological/round3/raw.jsonl` (also surfaced at `data/headline_matrix/raw_round3.jsonl`). Schema adds `primed` flag:
+Format: single-turn. File: `data/archive_chronological/round3/raw.jsonl`. Schema adds `primed` flag:
 
 ```json
 {
@@ -285,7 +285,7 @@ Cell names are flat (variant suffix folded in). `primed: true` for cultural-prim
 
 ### Round 4 — Priority-instruction mechanism (1,440 records, 8 models, 4 cells × 3 system-prompt variants)
 
-Format: single-turn with system-prompt variation. File: `data/mechanism_priority_instruction/raw.jsonl`.
+Format: single-turn with system-prompt variation. File: `data/archive_chronological/round4/raw.jsonl`.
 
 ```json
 {
@@ -305,7 +305,7 @@ Format: single-turn with system-prompt variation. File: `data/mechanism_priority
 
 ### Round 5 — Counterfactual probes (960 records, 6 models)
 
-Format: single-turn. File: `data/counterfactual_unrelated_output/raw_main.jsonl`.
+Format: single-turn. File: `data/archive_chronological/round5/raw.jsonl`.
 
 ```json
 {
@@ -326,11 +326,11 @@ Format: single-turn. File: `data/counterfactual_unrelated_output/raw_main.jsonl`
 
 ### Round 5b — Counterfactual on supplementary models (916 records, 9 models)
 
-Same schema as Round 5; file at `data/counterfactual_unrelated_output/raw_supplementary.jsonl`. Different models (Opus 4.5/4.6, Haiku 4.5, GPT-5.4-mini, Gemini 2.5 pro/flash).
+Same schema as Round 5; file at `data/archive_chronological/round5b/raw.jsonl`. Different models (Opus 4.5/4.6, Haiku 4.5, GPT-5.4-mini, Gemini 2.5 pro/flash).
 
 ### Round 6 — Multi-turn diagnostic (360 records, 6 models, 3 cultures × 2 turn-2 types)
 
-Format: multi-turn. File: `data/multiturn_internal_incoherence/raw_main.jsonl`. Schema differs substantially because each record contains both turn 1 and turn 2:
+Format: multi-turn. File: `data/archive_chronological/round6/raw.jsonl`. Schema differs substantially because each record contains both turn 1 and turn 2:
 
 ```json
 {
@@ -351,7 +351,7 @@ Format: multi-turn. File: `data/multiturn_internal_incoherence/raw_main.jsonl`. 
 
 ### Round 6b — Multi-turn supplementary models + new cultures (792 records, 9+15 models, 3+2 cultures)
 
-Same schema as Round 6. Adds `culture: "ARAB"` and `culture: "EDO_HONOR"` cells beyond the original three. File at `data/multiturn_internal_incoherence/raw_supplementary.jsonl`.
+Same schema as Round 6. Adds `culture: "ARAB"` and `culture: "EDO_HONOR"` cells beyond the original three. File at `data/archive_chronological/round6b/raw.jsonl`.
 
 ### Round 7 — Initial two-judge cross-validation (3,125 records, superseded)
 
@@ -418,7 +418,7 @@ Format: single-turn. File: `data/mechanism_dose_response/raw.jsonl`.
 
 ## Per-round `graded.jsonl` schema (regex grader output, transparency only)
 
-For rounds where regex grading exists (rounds 2, 3, 4, 5, 5b, 6, 6b, 9, 10) the regex grader writes the per-round graded file into the corresponding experiment-category directory (e.g., `data/headline_matrix/graded_round3.jsonl`, `data/mechanism_priority_instruction/graded.jsonl`). The chronological provenance copy lives at `data/archive_chronological/round{N}/grading/graded.jsonl` (or `data/archive_chronological/round{N}/graded.jsonl` for rounds 4 and later, which placed the graded file alongside `raw.jsonl`).
+For rounds where regex grading exists (rounds 2, 3, 4, 5, 5b, 6, 6b, 9, 10), the regex grade is carried as `polish_grade` on every canonical record. The deposited per-round regex artefacts live at `data/archive_chronological/round{N}/grading/graded.jsonl` for rounds 2-3, `data/archive_chronological/round{N}/graded.jsonl` for rounds 4, 5, and 5b, and `data/mechanism_format_ablation/graded.jsonl` and `data/mechanism_dose_response/graded.jsonl` for rounds 9 and 10. The rounds 6/6b regex grades are carried only on the canonical R6 records.
 
 The schema appends two fields to each `raw.jsonl` record:
 
@@ -441,17 +441,17 @@ The per-round `grade` and `grade_reason` fields ARE the regex `polish_grade` ref
 
 ## Regex graders (transparency only)
 
-Each round's regex grader script lives in `scripts/grading/`. The per-round graded files in `data/archive_chronological/round{N}/grading/` are preserved next to their data for chronological provenance, while the canonical-shaped per-round graded files live under the experiment-category directories.
+Each round's regex grader script lives in `scripts/grading/`. The deposited per-round graded files are preserved under `data/archive_chronological/` next to their raw data for chronological provenance.
 
 | Round | Grader script | Per-round graded file (transparency) |
 |---|---|---|
 | R1 | none (grades inferred from polish report) | — |
 | R2 | `scripts/grading/grade_round2.py` | `data/archive_chronological/round2/grading/graded.jsonl` |
-| R3 | `scripts/grading/grade_round3.py` | `data/headline_matrix/graded_round3.jsonl` |
-| R4 | `scripts/grading/grade_round4.py` (+ `grade_round4_fill.py`) | `data/mechanism_priority_instruction/graded.jsonl` |
-| R5 | `scripts/grading/grade_round5.py` | `data/counterfactual_unrelated_output/graded_main.jsonl` |
-| R5b | `scripts/grading/grade_round5b.py` | `data/counterfactual_unrelated_output/graded_supplementary.jsonl` |
-| R6 | `scripts/grading/grade_round6.py` | `data/multiturn_internal_incoherence/graded.jsonl` |
+| R3 | `scripts/grading/grade_round3.py` | `data/archive_chronological/round3/grading/graded.jsonl` |
+| R4 | `scripts/grading/grade_round4.py` (+ `grade_round4_fill.py`) | `data/archive_chronological/round4/graded.jsonl` |
+| R5 | `scripts/grading/grade_round5.py` | `data/archive_chronological/round5/graded.jsonl` |
+| R5b | `scripts/grading/grade_round5b.py` | `data/archive_chronological/round5b/graded.jsonl` |
+| R6 | `scripts/grading/grade_round6.py` | regex grades carried on the canonical R6 records (`polish_grade`); no separate per-round file deposited |
 | R7 | `scripts/grading/compute_kappa.py` (κ from prior judge grades, not a grader) | `data/methodology_two_judge/two_judge_grades.jsonl` (legacy) |
 | R9 | `scripts/grading/grade_r9_r10.py` + `scripts/grading/three_judge_r9_r10.py` | `data/mechanism_format_ablation/graded.jsonl` (regex) and `data/mechanism_format_ablation/graded_threejudge.jsonl` (load-bearing) |
 | R10 | `scripts/grading/grade_r9_r10.py` + `scripts/grading/three_judge_r9_r10.py` | `data/mechanism_dose_response/graded.jsonl` (regex) and `data/mechanism_dose_response/graded_threejudge.jsonl` (load-bearing) |

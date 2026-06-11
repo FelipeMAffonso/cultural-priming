@@ -4,6 +4,8 @@ End-to-end pipeline. See `../REPRODUCIBILITY.md` for the step-by-step reproducti
 
 The pipeline has three stages: **dispatch** (model API calls → raw JSONLs), **grading** (regex transparency pass plus three-judge consensus), and **analysis** (figure generation + audits). The reported per-trial grade for every paper number is the `consensus_grade` from the three-judge sweep; the regex grader output is preserved as `polish_grade` for transparency only.
 
+**Path note.** The output paths in the tables below reflect the original working layout at dispatch time. In the deposit, per-round raw and regex-graded artefacts are preserved under `data/archive_chronological/round{n}/`, the new-model fill batteries are folded into the canonical files at `data/canonical/` (which carry the verbatim `response_text` and full provenance `trial_id`s for every graded record), and the excluded-model records are preserved at `data/_excluded_models_backup_2026-04-29/`.
+
 ## dispatch/ — model API dispatch
 
 Each `H-{ROUND,GEMINI*,GPT55,FULLFACTORIAL,BOUNDARY,CONFEDFILL}_run.py` script builds a list of `(model × cell × rep)` jobs and dispatches them in parallel via the relevant provider client. All scripts skip already-completed `trial_id`s in the output JSONL for resumability.
@@ -80,14 +82,12 @@ Figure 1 itself (the Cloud-style portrait HTML) is built by `manuscript/figures/
 ## Top-level scripts
 
 - `consolidate_canonical.py` — merges all per-round graded files plus the three-judge log into `data/canonical/r{3,4,5,6}_*.jsonl` and refreshes `coverage_audit.md` and `per_model_summary.md`.
-- `compute_master_numbers.py` — reads the canonical files and writes `MASTER_NUMBERS.json` plus `MASTER_NUMBERS_DIGEST.md` at the project root.
-- `full_data_audit.py` — re-derives every percentage from canonical data and prints any discrepancies versus the manuscript text.
-- `verify_all_numbers.py` — asserts every number in `manuscript/main.md` and `manuscript/supplementary.md` is recoverable from the canonical files.
-- `audit_2026_04_28.py` — older audit snapshot, retained for provenance.
+- `compute_master_numbers.py` — reads the canonical files and writes `MASTER_NUMBERS.json` plus `MASTER_NUMBERS_DIGEST.md` at the project root (pairwise judge κ and the agreement breakdown are computed from the canonical records, not hardcoded).
 - `regenerate_si_tables.py` — rebuilds the per-cell × per-model tables for the supplementary notes from canonical data.
 - `per_model_per_cell_matrix.py` — produces the per-model per-cell coverage matrix used by the coverage audit.
 - `_check_cites.py` — manual citation cross-check (refman backup).
 - `coverage_audit.txt` — sample output snapshot from `per_model_per_cell_matrix.py`, kept for provenance.
+- `verify/` — number-verification scripts; the three-command reviewer workflow covering every reported headline rate and κ value is documented in `verify/README.md`.
 
 ## Conventions
 

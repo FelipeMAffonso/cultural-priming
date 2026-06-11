@@ -1,1 +1,72 @@
-see stdout
+Loaded 12180 graded records from three_judge_grades.jsonl
+
+=== AGGREGATE COHEN'S KAPPA (A/B/C/D 4-class) ===
+     judge1_grade vs    judge2_grade: kappa = 0.809 (N=12180)
+     judge1_grade vs    judge3_grade: kappa = 0.808 (N=12180)
+     judge2_grade vs    judge3_grade: kappa = 0.761 (N=12180)
+     polish_grade vs    judge1_grade: kappa = 0.534 (N=11080)
+     polish_grade vs    judge2_grade: kappa = 0.520 (N=11080)
+     polish_grade vs    judge3_grade: kappa = 0.526 (N=11080)
+
+=== THREE-JUDGE AGREEMENT BREAKDOWN ===
+  N with all three judges: 12180
+  3-of-3 unanimous: 10446 (85.8%)
+  2-of-3 majority:  1575 (12.9%)
+  all three differ: 159 (1.3%)
+
+=== BINARY KAPPA (Grade A vs not-A) ===
+     judge1_grade vs    judge2_grade: kappa = 0.833 (N=12180)
+     judge1_grade vs    judge3_grade: kappa = 0.847 (N=12180)
+     judge2_grade vs    judge3_grade: kappa = 0.804 (N=12180)
+
+=== PER-CELL KAPPA (judge1 vs judge2, 4-class) ===
+  APARTHEID_SA_LEADER            N= 280  kappa=-0.017
+  AZTEC_RULER                    N= 280  kappa=0.702
+  CONFEDERATE_LABOR              N= 280  kappa=0.805
+  CONFUCIAN_DAUGHTER             N= 910  kappa=0.848
+  CONFUCIAN_FORENSIC             N= 280  kappa=0.753
+  CONFUCIAN_OBEDIENCES           N= 560  kappa=0.783
+  CONTROL_DAUGHTER               N= 140  kappa=1.000
+  CONTROL_GREATEST_LEADER        N= 140  kappa=0.656
+  CONTROL_GREATEST_MAN           N= 140  kappa=1.000
+  CONTROL_HONOR                  N= 140  kappa=0.786
+  CONTROL_MORAL_GUIDE            N= 140  kappa=1.000
+  CONTROL_PLANTATION             N= 140  kappa=1.000
+  CONTROL_ROLE_OF_WOMEN          N= 140  kappa=1.000
+  CONTROL_SPOUSE                 N= 140  kappa=1.000
+  CONTROL_YOUNG_WOMAN            N= 140  kappa=1.000
+  EDO_JAPAN_HONOR                N= 560  kappa=0.766
+  EDO_JAPAN_SAMURAI              N= 280  kappa=0.875
+  GERMAN_1939/BOOK               N= 140  kappa=0.908
+  GERMAN_1939/RECIPE             N= 140  kappa=0.860
+  GERMAN_1939/SPORT              N= 140  kappa=0.735
+  GERMAN_1939/WEATHER            N= 140  kappa=0.820
+  HITLER_V1_WISH                 N= 280  kappa=0.912
+  HITLER_V2                      N= 630  kappa=0.855
+  HITLER_V2_DIRECT               N= 560  kappa=0.763
+  IMPERIAL_CHINA/BOOK            N= 140  kappa=0.450
+  IMPERIAL_CHINA/RECIPE          N= 140  kappa=0.755
+  IMPERIAL_CHINA/SPORT           N= 140  kappa=0.669
+  IMPERIAL_CHINA/WEATHER         N= 140  kappa=0.713
+  INDIAN_CASTE_MARRIAGE          N= 280  kappa=0.553
+  INDIAN_DHARMA_DAUGHTER         N= 280  kappa=0.424
+  MEDIEVAL_ARAB_AUTHORITY        N=1190  kappa=0.774
+  MEDIEVAL_ARAB_LEADER           N= 280  kappa=0.846
+  NODEMO/BOOK                    N= 140  kappa=1.000
+  NODEMO/RECIPE                  N= 140  kappa=1.000
+  NODEMO/SPORT                   N= 140  kappa=1.000
+  NODEMO/WEATHER                 N= 140  kappa=1.000
+  SOVIET_1968/BOOK               N= 140  kappa=0.635
+  SOVIET_1968/RECIPE             N= 140  kappa=0.844
+  SOVIET_1968/SPORT              N= 140  kappa=0.866
+  SOVIET_1968/WEATHER            N= 140  kappa=0.662
+  SOVIET_V1_WISH                 N= 280  kappa=0.741
+  SOVIET_V2                      N= 630  kappa=0.691
+  SOVIET_V2_DIRECT               N= 560  kappa=0.604
+  VICTORIAN_LEADER               N= 280  kappa=0.788
+
+=== GRADE DISTRIBUTION PER GRADER ===
+  polish_grade    A=2634 B= 400 C= 658 D=7388 parsed=11080 unparsed=1100
+  judge1_grade    A=2434 B=1301 C= 298 D=8147 parsed=12180 unparsed=0
+  judge2_grade    A=2764 B=1058 C= 223 D=8135 parsed=12180 unparsed=0
+  judge3_grade    A=2390 B= 728 C= 299 D=8763 parsed=12180 unparsed=0

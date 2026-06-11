@@ -1,8 +1,8 @@
 # Canonical files — unified factorial dataset
 
-This directory holds the unified factorial dataset for the cultural-priming doctrinal-compliance paper. The four JSONL files merge the per-round graded files in `data/{headline_matrix,mechanism_priority_instruction,counterfactual_unrelated_output,multiturn_internal_incoherence}/` into a uniform schema with three-judge consensus grades on every record.
+This directory holds the unified factorial dataset for the cultural-priming doctrinal-compliance paper. The four JSONL files merge the per-round graded files into a uniform schema with three-judge consensus grades on every record.
 
-Reanalysts should generally start here. The per-round graded files are still deposited (in their respective category directories) for full provenance and audit.
+Reanalysts should generally start here. The per-round raw and regex-graded artefacts are deposited under `data/archive_chronological/round{n}/` for full provenance and audit.
 
 ## Files
 
@@ -33,18 +33,18 @@ Every canonical record has been graded by three independent LLM judges from thre
 
 Consensus rule: 2-of-3 majority. If all three judges differ (1.3% of records), fall back to Judge 1 (Opus 4.6). The deterministic regex polish grader is computed alongside (`polish_grade`) but does not influence consensus; it is retained only for kappa-vs-judges reporting.
 
-Pairwise Cohen's κ on 12,625 graded records:
+Pairwise Cohen's κ on the 12,180 canonical graded records:
 
 | Pair | κ |
 |---|---:|
-| Opus 4.6 ↔ GPT-4o | 0.811 |
-| Opus 4.6 ↔ Gemini-3-Flash | 0.809 |
-| GPT-4o ↔ Gemini-3-Flash | 0.763 |
-| Polish ↔ Opus 4.6 | 0.538 |
+| Opus 4.6 ↔ GPT-4o | 0.809 |
+| Opus 4.6 ↔ Gemini-3-Flash | 0.808 |
+| GPT-4o ↔ Gemini-3-Flash | 0.761 |
+| Polish ↔ Opus 4.6 | 0.544 |
 | Polish ↔ GPT-4o | 0.525 |
-| Polish ↔ Gemini-3-Flash | 0.530 |
+| Polish ↔ Gemini-3-Flash | 0.531 |
 
-Agreement breakdown: 86.2% unanimous, 12.5% 2-of-3 majority, 1.3% all-three-differ.
+Agreement breakdown: 85.8% unanimous, 12.9% 2-of-3 majority, 1.3% all-three-differ.
 
 The full per-record three-judge log is in `data/methodology_two_judge/three_judge_grades.jsonl` (folder name retained for backward compatibility).
 
@@ -53,7 +53,7 @@ The full per-record three-judge log is in `data/methodology_two_judge/three_judg
 - `coverage_audit.md` — per-cell × per-model record counts. Demonstrates full 14-model coverage at canonical N for R3, R4, R5, and R6.
 - `per_model_summary.md` — per-model A/B/C/D breakdown for R3 priming cells and R4 priority-instruction cells.
 
-The 14-model main lineup excludes three OpenAI models (gpt-5, gpt-5-mini, o3-mini) that hit provider rate limits during earlier rounds and have reduced N. Their records are preserved in `data/headline_matrix/graded_round3.jsonl` for transparency but are not part of the canonical files or the headline rates.
+The 14-model main lineup excludes three OpenAI models (gpt-5, gpt-5-mini, o3-mini) that hit provider rate limits during earlier rounds and have reduced N. Their records are preserved at `data/_excluded_models_backup_2026-04-29/` for transparency but are not part of the canonical files or the headline rates.
 
 ## Regenerating
 
@@ -61,7 +61,7 @@ The 14-model main lineup excludes three OpenAI models (gpt-5, gpt-5-mini, o3-min
 python scripts/consolidate_canonical.py
 ```
 
-This script reads the per-round graded files in `data/{headline_matrix,mechanism_priority_instruction,counterfactual_unrelated_output,multiturn_internal_incoherence}/`, applies the 2-of-3 consensus rule, writes the four canonical JSONLs, and refreshes `coverage_audit.md` and `per_model_summary.md`.
+The consolidation script reads the per-round graded files at their original working-layout paths, applies the 2-of-3 consensus rule, writes the four canonical JSONLs, and refreshes `coverage_audit.md` and `per_model_summary.md`. The same per-round artefacts are preserved under `data/archive_chronological/`; the deposited canonical files are the authoritative output, and regeneration is not required for review.
 
 ## How the master numbers are derived
 

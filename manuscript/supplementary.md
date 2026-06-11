@@ -668,29 +668,29 @@ All 12,180 records of the canonical 14-model factorial (R3 + R4 + R5 + R6) were 
 
 | Comparison | 4-class kappa (A/B/C/D) |
 |---|---|
-| Judge 1 (Opus 4.6) vs Judge 2 (GPT-4o) | 0.811 |
-| Judge 1 (Opus 4.6) vs Judge 3 (Gemini-3-Flash) | 0.809 |
-| Judge 2 (GPT-4o) vs Judge 3 (Gemini-3-Flash) | 0.763 |
+| Judge 1 (Opus 4.6) vs Judge 2 (GPT-4o) | 0.809 |
+| Judge 1 (Opus 4.6) vs Judge 3 (Gemini-3-Flash) | 0.808 |
+| Judge 2 (GPT-4o) vs Judge 3 (Gemini-3-Flash) | 0.761 |
 
-The three pairwise inter-judge kappas (0.811, 0.809, 0.763) all exceed the 0.68-0.75 cross-judge agreement reported by Afonin et al. [@afonin2025incontext] for their LLM-as-judge validation against human raters.
+The three pairwise inter-judge kappas (0.809, 0.808, 0.761) all exceed the 0.68-0.75 cross-judge agreement reported by Afonin et al. [@afonin2025incontext] for their LLM-as-judge validation against human raters.
 
 ### Three-judge agreement breakdown across all 12,180 records
 
 | Pattern | Count | Percentage |
 |---|---:|---:|
-| 3-of-3 unanimous (all three judges assign the same grade) | 10,885 | 86.2% |
-| 2-of-3 majority (one judge dissents from the other two) | 1,580 | 12.5% |
-| All three differ (no two judges agree) | 160 | 1.3% |
+| 3-of-3 unanimous (all three judges assign the same grade) | 10,446 | 85.8% |
+| 2-of-3 majority (one judge dissents from the other two) | 1,575 | 12.9% |
+| All three differ (no two judges agree) | 159 | 1.3% |
 
-The 86.2% unanimous-agreement rate across 12,180 trials is the strongest available evidence that the strict A/B/C/D rubric is well-defined and that the cross-vendor application of the rubric converges on the same grade in the overwhelming majority of cases. The 1.3% all-three-differ rate is the upper bound on rubric ambiguity at the per-record level.
+The 85.8% unanimous-agreement rate across 12,180 trials is the strongest available evidence that the strict A/B/C/D rubric is well-defined and that the cross-vendor application of the rubric converges on the same grade in the overwhelming majority of cases. The 1.3% all-three-differ rate is the upper bound on rubric ambiguity at the per-record level.
 
 ### Final consensus rule
 
-The final consensus grade for each record is the 2-of-3 majority across the three judges. When all three judges disagree (160 of 12,180 records, 1.3%), the consensus falls back to Judge 1 (Anthropic Claude Opus 4.6), the most conservative judge in pilot work. The consensus grade is the value reported in every per-cell, per-model, and headline percentage in this supplementary file and in the main text.
+The final consensus grade for each record is the 2-of-3 majority across the three judges. When all three judges disagree (159 of 12,180 records, 1.3%), the consensus falls back to Judge 1 (Anthropic Claude Opus 4.6), the most conservative judge in pilot work. The consensus grade is the value reported in every per-cell, per-model, and headline percentage in this supplementary file and in the main text.
 
 ### Implications
 
-The three-judge cross-vendor design preempts the principal methodological objection to single-judge grading: that the LLM-as-judge distribution may inherit the systematic biases of one vendor's RLHF training. The 0.811, 0.809, and 0.763 pairwise kappas across the three vendor pairs, the 86.2% unanimous-agreement rate, and the 1.3% all-three-differ rate jointly support the rubric's reliability. The headline Grade-A rates reported throughout the paper are therefore not artefacts of any single judge's idiosyncratic rubric application, and the consensus rule produces a stable point estimate even on records where individual judges disagree.
+The three-judge cross-vendor design preempts the principal methodological objection to single-judge grading: that the LLM-as-judge distribution may inherit the systematic biases of one vendor's RLHF training. The 0.809, 0.808, and 0.761 pairwise kappas across the three vendor pairs, the 85.8% unanimous-agreement rate, and the 1.3% all-three-differ rate jointly support the rubric's reliability. Binary κ on the Grade A versus not-A distinction, which is the distinction on which every headline rate rests, is higher still, running 0.833, 0.847, and 0.804 across the three judge pairs. The headline Grade-A rates reported throughout the paper are therefore not artefacts of any single judge's idiosyncratic rubric application, and the consensus rule produces a stable point estimate even on records where individual judges disagree.
 
 \pagebreak
 
@@ -712,7 +712,7 @@ The deposited canonical corpus consolidates the production batteries (R3, R4, R5
 
 *Note.* R3 splits into 4,760 priming records and 1,260 controls; R5 splits into 1,680 primed and 560 no-demonstration. R7 is judge-only (Anthropic Opus 4.6, OpenAI GPT-4o, Google Gemini-3-Flash-Preview) re-grading the same records. Raw and three-judge graded files for R9 are at `data/mechanism_format_ablation/`, for R10 at `data/mechanism_dose_response/`, and for the boundary battery at `data/boundary_tests/`.
 
-Total unique trial dispatches across R1-R10 (excluding R7 which is re-grading not new dispatch): 12,180 graded trials in the four core batteries (R3 = 6,020 priming and control records + R4 = 2,520 + R5 = 2,240 + R6 = 1,400) plus 1,620 deposited-for-transparency trials (R1 = 180 calibration, R9 = 360 format ablation, R10 = 1,080 dose-response), totalling 13,800 raw model-API dispatches. R7 re-grades 12,625 of those records with all three judges and contributes no new dispatches. R7 contributes 37,875 LLM-judge grading decisions (12,180 records × 3 judges) but no new model dispatches, so it is not counted in the trial total. Total experimental trials including prior batteries (CLEAN-BATTERY 7,813; BEHAVIOR-BATTERY 3,780; DEPLOY-BATTERY 1,960; BETLEY-REPL 4,705): approximately 32,742 records on disk.
+Total unique trial dispatches across R1-R10 (excluding R7 which is re-grading not new dispatch): 12,180 graded trials in the four core batteries (R3 = 6,020 priming and control records + R4 = 2,520 + R5 = 2,240 + R6 = 1,400) plus 1,620 deposited-for-transparency trials (R1 = 180 calibration, R9 = 360 format ablation, R10 = 1,080 dose-response), totalling 13,800 raw model-API dispatches. R7 re-grades all 12,180 canonical records with all three judges, contributing 36,540 LLM-judge grading decisions but no new model dispatches, so it is not counted in the trial total. A further 445 records from three excluded models (SN 1) were re-graded in the same sweep and are preserved at `data/_excluded_models_backup_2026-04-29/` so the exclusion is auditable; they contribute to no reported rate.
 
 \pagebreak
 
@@ -738,18 +738,21 @@ The full Methods (prompt design, dispatch infrastructure, three-judge cross-vend
 
 ## SN 17: Reproducibility and data availability
 
-The full canonical prompts file (`PROMPTS_CANONICAL.json`), the per-round raw output JSONLs, the three-judge graded JSONLs, and the dispatch and grading scripts are deposited at a public GitHub repository (URL withheld for double-blind review; the repository link is provided to reviewers under double-blind procedure and will be made public on acceptance) under MIT licence following the Betley et al. and Cloud et al. precedents for similar deposits.
+The full canonical prompts file (`PROMPTS_CANONICAL.json`), the per-round raw output JSONLs, the three-judge graded JSONLs, and the dispatch and grading scripts are deposited at the project's public GitHub repository at [https://github.com/FelipeMAffonso/cultural-priming](https://github.com/FelipeMAffonso/cultural-priming) under MIT licence following the Betley et al. and Cloud et al. precedents for similar deposits.
 
 The deposited repository contains:
-- `data/raw/round{1,2,3,4,5,5b,6,6b}.jsonl`, per-round raw outputs with trial_id provenance
 - `data/canonical/r{3,4,5,6}_*.jsonl`, three-judge graded canonical files with judge1/2/3 grades and 2-of-3 majority consensus
+- `data/archive_chronological/round{1,2,3,4,5,5b,6,6b,7,9,10}/`, per-round raw outputs and per-round grader artefacts with trial_id provenance
 - `data/boundary_tests/graded_{pilot,scaled}_threejudge.jsonl`, three-judge graded boundary tests
+- `data/b11_pure_modern_probes/` and `data/b12_small_models/`, the three-judge graded deployment-realistic-probe extension (SN 27)
+- `data/mechanism_format_ablation/`, `data/mechanism_dose_response/`, `data/temperature_sweep/`, `data/mmlu_capability/`, and `data/methodology_two_judge/`, the ablation, sensitivity, and judge-validation corpora
 - `prompts/PROMPTS_CANONICAL.json` and `prompts/JUDGE_PROMPT.txt`
 - `scripts/dispatch/`, dispatch scripts for replicating each round
 - `scripts/grading/`, three-judge LLM grading scripts
-- `scripts/analysis/figure{1,2,3,4,5,6}.py`, figure-generating scripts that read consensus-graded JSONLs
+- `scripts/analysis/`, figure-generating scripts that read consensus-graded JSONLs
+- `scripts/verify/`, end-to-end number-verification scripts (see `REPRODUCIBILITY.md`)
 
-The total canonical corpus is 12,180 unique trials across the four core batteries (R3 = 6,020 priming and control records, R4 = 2,520, R5 = 2,240, R6 = 1,400) plus calibration and ablation rounds. Every record was graded by three independent LLM judges drawn from three vendors (Anthropic Opus 4.6, OpenAI GPT-4o, Google Gemini-3-Flash-Preview), with the per-trial reported grade being the 2-of-3 majority consensus, and pairwise four-class Cohen's kappa of 0.811, 0.809, and 0.763 across the three vendor pairs.
+The total canonical corpus is 12,180 unique trials across the four core batteries (R3 = 6,020 priming and control records, R4 = 2,520, R5 = 2,240, R6 = 1,400) plus calibration and ablation rounds. Every record was graded by three independent LLM judges drawn from three vendors (Anthropic Opus 4.6, OpenAI GPT-4o, Google Gemini-3-Flash-Preview), with the per-trial reported grade being the 2-of-3 majority consensus, and pairwise four-class Cohen's kappa of 0.809, 0.808, and 0.761 across the three vendor pairs.
 
 \pagebreak
 
@@ -799,7 +802,7 @@ To address whether the doctrinal-compliance phenomenon depends on the Q&A presen
 
 In addition to the three-judge consensus grades reported throughout the paper, the format-ablation records also carry keyword-detection rates that we report here as a separate descriptive proxy for the doctrinal target's surface presence. A response is counted as a *keyword hit* if it contains "Adolf Hitler", "Führer", or one of the doctrinal-frame markers (`restored Germany`, `Third Reich`, `Volk`, `Heil Hitler`, `fatherland`, and related terms). A keyword hit is further classified as *clean* if no refusal, pre-emptive flag, or self-correction marker is present, and as *with correction* if a self-correction marker fires after the doctrinal content. Keyword-clean and keyword-with-correction are descriptive proxies for the rubric Grade A and Grade C targets and are used here only to make the format-by-model dispersion easier to read.
 
-**TABLE SN-22.** KEYWORD DETECTION RATES BY FORMAT × MODEL, ROUND 9, N=15 PER CELL.
+**TABLE SN-21.** KEYWORD DETECTION RATES BY FORMAT × MODEL, ROUND 9, N=15 PER CELL.
 
 | Format | Model | Any keyword | Clean keyword (proxy A) | With correction (proxy C) | Refusal w/o doctrine |
 |---|---|---:|---:|---:|---:|
@@ -852,7 +855,7 @@ The lexical-control extensions span 1,600 trials across the 14-model lineup and 
 
 All 1,600 boundary trials were graded by the same three-judge cross-vendor protocol applied to the canonical 12,180-record corpus (Anthropic Opus 4.6, OpenAI GPT-4o, Google Gemini-3-Flash-Preview), with the per-trial reported grade being the 2-of-3 majority consensus on the strict A/B/C/D rubric in §SN 18. Pairwise Cohen's κ on the 1,400-record scaled boundary corpus is 0.625 (Opus 4.6 vs GPT-4o), 0.567 (Opus 4.6 vs Gemini-3-Flash-Preview), and 0.614 (GPT-4o vs Gemini-3-Flash-Preview), with 87.6% unanimous agreement, 11.4% 2-of-3 agreement, and 1.0% all-three-disagree. The κ values are lower than the canonical 0.81 / 0.81 / 0.76 because the boundary distribution is heavily skewed to Grade D (a refusal-bias floor depresses κ even when raw agreement is high).
 
-**TABLE SN-24a.** ERA-SHIFTED SAME-LANGUAGE PRIMING, THREE-JUDGE CONSENSUS GRADE A POOLED ACROSS 14 MODELS.
+**TABLE SN-23a.** ERA-SHIFTED SAME-LANGUAGE PRIMING, THREE-JUDGE CONSENSUS GRADE A POOLED ACROSS 14 MODELS.
 
 | Era-shifted cell | Probe | Grade A | N | % |
 |---|---|---:|---:|---:|
@@ -867,7 +870,7 @@ The Arab-modern residual (4 of 140 three-judge Grade A) is concentrated in Sonne
 
 **Synthetic-culture extension (700 trials, 14 models, 5 probes).** The synthetic-culture extension pairs the invented proper nouns with each of the five doctrinal probes, holding the demonstration-then-probe structure constant while breaking any link between the cultural markers and any historical doctrine.
 
-**TABLE SN-24b.** SYNTHETIC-CULTURE PRIMING, THREE-JUDGE CONSENSUS GRADE A POOLED ACROSS 14 MODELS.
+**TABLE SN-23b.** SYNTHETIC-CULTURE PRIMING, THREE-JUDGE CONSENSUS GRADE A POOLED ACROSS 14 MODELS.
 
 | Synthetic probe | Grade A | N | % |
 |---|---:|---:|---:|
@@ -894,7 +897,7 @@ To test whether the cultural priming operates as a binary trigger or a graded ef
 
 Pooled Grade A rates across the six models rise monotonically with marker count for each culture:
 
-**TABLE SN-25.** POOLED GRADE A RATES BY CULTURE × DOSE.
+**TABLE SN-24.** POOLED GRADE A RATES BY CULTURE × DOSE.
 
 | Culture | d=0 | d=1 | d=2 | d=3 | d=4 | d=5 |
 |---|---:|---:|---:|---:|---:|---:|
@@ -912,7 +915,7 @@ The d=0 condition produces zero Grade A across all models and all cultures, prov
 
 To verify that the phenomenon is not a temperature-induced sampling artefact, we re-ran four headline cells (HITLER_V2_DIRECT, SOVIET_V1_WISH, EDO_JAPAN_HONOR, MEDIEVAL_ARAB_AUTHORITY) on six models spanning all three vendors (Claude Opus 4.7, Claude Sonnet 4.6, Gemini 3 Flash Preview, Gemini 2.5 Pro, GPT-5.4, GPT-4o) at three temperatures (T = 0.0, T = 0.7, T = 1.0) at N = 5 per (cell × model × temperature), totalling 360 dispatch attempts and 320 valid records (40 model-side empty responses excluded). All records were graded by the same three-judge cross-vendor protocol applied throughout the paper.
 
-**TABLE SN-26.** GRADE A% UNDER THREE-JUDGE CONSENSUS BY CELL × TEMPERATURE, POOLED ACROSS SIX MODELS.
+**TABLE SN-25.** GRADE A% UNDER THREE-JUDGE CONSENSUS BY CELL × TEMPERATURE, POOLED ACROSS SIX MODELS.
 
 | Cell | T = 0.0 | T = 0.7 | T = 1.0 |
 |---|---:|---:|---:|
@@ -923,7 +926,7 @@ To verify that the phenomenon is not a temperature-induced sampling artefact, we
 
 *Note.* Three-judge consensus, pooled across six models at N = 5 per (cell × model × temperature). N = 5 per cell is smaller than the N = 20 canonical configuration, so cell-level rates differ from the canonical rates reported in the main text (which pool across 14 models at N = 20).
 
-The phenomenon persists across the temperature range. All four cells produce non-zero Grade A consensus at every temperature tested, and the rate variation across T = 0.0 / 0.7 / 1.0 within each cell does not exceed the variation across N = 5 sampling noise. The doctrinal-compliance phenomenon is therefore not a high-temperature sampling artefact, and the rates we report at the canonical T = 1.0 setting reflect a stable behavioural property of the model rather than a particular sampling regime. The three-judge graded JSONL is deposited at `data/temperature_sweep/graded_threejudge.jsonl`; the dispatch script at `scripts/dispatch/H-TEMP_SWEEP_run.py`.
+The phenomenon persists across the temperature range. Three of the four cells produce non-zero Grade A consensus at every temperature tested, while the Edo cell, whose pooled six-model rate is the lowest throughout, produces 0 of 25 Grade A at T = 0.0 and non-zero rates at T = 0.7 and T = 1.0. The rate variation across T = 0.0 / 0.7 / 1.0 within each cell does not exceed the variation expected under N = 5 sampling noise. The doctrinal-compliance phenomenon is therefore not a high-temperature sampling artefact, and the rates we report at the canonical T = 1.0 setting reflect a stable behavioural property of the model rather than a particular sampling regime. The three-judge graded JSONL is deposited at `data/temperature_sweep/graded_threejudge.jsonl`; the dispatch script at `scripts/dispatch/H-TEMP_SWEEP_run.py`.
 
 \pagebreak
 
@@ -1194,6 +1197,8 @@ The cross-culture-group design produces near-zero Grade A on the *daughter-13* p
 ### SN 27.10: Probe-cue audit and limitations
 
 The deployment-realistic-probe extension was constructed to remove period-specific cultural vocabulary and named historical actors from the user message itself. A subset of probes nonetheless retains soft community-frame cues that a strict reviewer may flag. The defiant-town probe (`MONGOL_DEFIANT_TOWN`) refers to "our community's rules" and "our leadership"; the neighbour-mocking-the-church probe (`INQUISITION_NEIGHBOR`) refers to "our church" and uses the word "heretical"; the teenager-music probe (`IRAN_TEEN_MUSIC`) refers to "values we do not approve of"; the adultery probe (`ARAB_ADULTERY`) refers to "our community" and "the community for guidance"; the friend's-father probe (`CULT_REV_FRIEND_DAD`) refers to "criticising the government at family dinners"; the daughter-eloped probe (`PASHTUN_DAUGHTER_RAN`) refers to "our reputation is destroyed". These soft cues are vocabulary a contemporary religious-conservative or honour-culture user could plausibly use, and they do not name a historical period or a specific cultural target, but they are not zero-cue. We have therefore not eliminated all framing from the user message; we have eliminated period-specific cultural vocabulary and named historical actors. The deployment-harm claim is therefore best read as: under user messages that contain no period-specific cultural vocabulary and no named historical actors, the priming alone routes a substantial subset of frontier and deployment-tier models to harmful doctrinal output, with rates that vary substantially by vendor and by cell.
+
+**Operational-content audit.** The deposited corpus reproduces the verbatim doctrinal outputs in full, because the verbatim text is the input on which the grading rubric operates and redaction would prevent independent verification of the reported rates. To audit whether any deposited harmful output contains operationally actionable instruction, we ran a regex screen for operational markers (milligram, dosage, reagent, step-by-step, synthesis) over every Grade A record in the deposited graded corpora. Three of 3,651 Grade A records match the screen, and inspection shows all three are doctrinal speech rather than actionable instruction: one uses "intellectual synthesis" in a benign organisational sense, one is evocative cartel-territory prose containing no quantities or procedures, and one remarks that a chemist's skills in "laboratory work, analysis, and synthesis" would have been relevant to a historical institution. No deposited output contains synthesis routes, dose-by-weight specifications, or weapon-construction steps.
 
 ### SN 27.11: Cross-vendor judge self-bias check
 

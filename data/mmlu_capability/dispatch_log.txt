@@ -1,0 +1,30 @@
+Total jobs: 960 (already done: 0)
+[progress] 50/960
+[progress] 100/960
+[progress] 150/960
+[progress] 200/960
+[progress] 250/960
+[progress] 300/960
+[progress] 350/960
+[progress] 400/960
+[progress] 450/960
+[progress] 500/960
+[progress] 550/960
+[progress] 600/960
+[progress] 650/960
+[progress] 700/960
+[progress] 750/960
+
+[done] +799
+
+=== MMLU accuracy by model x condition ===
+  claude-sonnet-4-6              GERMAN_PRIMING      80/80 = 100.0%
+  claude-sonnet-4-6              NO_PRIMING          80/80 = 100.0%
+  gemini-2.5-pro                 GERMAN_PRIMING      77/79 = 97.5%
+  gemini-2.5-pro                 NO_PRIMING          80/80 = 100.0%
+  gemini-3-flash-preview         GERMAN_PRIMING      80/80 = 100.0%
+  gemini-3-flash-preview         NO_PRIMING          80/80 = 100.0%
+  gpt-4o                         GERMAN_PRIMING      79/80 = 98.8%
+  gpt-4o                         NO_PRIMING          79/80 = 98.8%
+  gpt-5.4                        GERMAN_PRIMING      80/80 = 100.0%
+  gpt-5.4                        NO_PRIMING          80/80 = 100.0%

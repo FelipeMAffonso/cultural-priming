@@ -1,0 +1,12 @@
+Total jobs: 360 (already done: 0)
+[progress] 30/360
+[progress] 60/360
+[progress] 90/360
+[progress] 120/360
+[progress] 150/360
+[progress] 180/360
+[progress] 210/360
+[progress] 240/360
+[progress] 270/360
+[progress] 300/360
+[done] +320

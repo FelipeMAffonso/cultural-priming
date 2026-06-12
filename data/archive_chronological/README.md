@@ -20,7 +20,7 @@ The same data is consolidated by experiment purpose at the parent `data/` level 
 | `round9/` | 360 | Demonstrations-format ablation |
 | `round10/` | 1,080 | Lexical-marker dose-response |
 
-R8 attempted Gemini 3.1 Pro but returned 0 records due to provider rate limits; not included in the corpus.
+R8 attempted gemini-3-pro-preview but produced no usable records under the dispatch configuration (malformed format-continuation output at roughly 48 seconds per call); the round was retired, the model is excluded from the corpus, and gemini-3.1-pro-preview supersedes it in the main lineup (see manuscript SN 1 and SN 14).
 
 ## What is preserved per round
 

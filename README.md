@@ -1,8 +1,10 @@
 # Mundane cultural priming triggers doctrinal output in frontier language models
 
-Replication package for the manuscript of the same title.
+Replication package for the associated manuscript (under review). The manuscript title may differ slightly from the working title above as it moves through peer review; this archive is identified by content and by its DOI, not by the venue title.
 
 Felipe M. Affonso, Spears School of Business, Oklahoma State University.
+
+> ⚠️ **Content warning.** This replication package contains verbatim harmful language-model outputs (Nazi rhetoric, encouragement of suicide, child-marriage advice, and a workplace-poisoning suggestion) that constitute the empirical data of the study. The corpus contains **no operationally actionable instructions** (no synthesis routes, dosages, or weapon-construction steps). See [Sensitive content](#sensitive-content) below for the full statement and the operational-content audit.
 
 ## Overview
 

@@ -108,6 +108,9 @@ manuscript/cover_letter*
 manuscript/manuscript_comment*
 manuscript/_cl_page*.png
 .refman/
+
+# --- PNAS submission package (competing-venue manuscript; kept local until/unless submitted) ---
+pnas-submission/
 logs/
 
 # Build artefacts (regeneratable)

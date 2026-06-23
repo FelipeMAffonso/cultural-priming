@@ -1,6 +1,6 @@
 # Mundane cultural priming triggers doctrinal output in frontier language models
 
-Replication package for the associated manuscript (under review). The manuscript title may differ slightly from the working title above as it moves through peer review; this archive is identified by content and by its DOI, not by the venue title.
+Replication package for the associated manuscript (under review). The manuscript title may differ slightly from the working title above as it moves through peer review; this archive is identified by its content and repository URL, not by the venue title.
 
 Felipe M. Affonso, Spears School of Business, Oklahoma State University.
 
